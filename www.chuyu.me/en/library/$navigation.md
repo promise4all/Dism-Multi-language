@@ -1,4 +1,4 @@
-#### [About Dism ++] (? File = start.md "Back")
+#### [About Dism ++](?file=start.md "Back")
 
 ##### 1. Quick Start Guide
 - [1.1 Quick Start](?file=Quickstart.md "Quick Start")
