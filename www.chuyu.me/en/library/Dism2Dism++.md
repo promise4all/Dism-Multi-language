@@ -1,356 +1,356 @@
-﻿# Dism转Dism++入门
-Dism++很大程度受到Dism的影响。这是因为Dism与Dism++拥有几乎相同的底层实现。可以说，Dism++复制了Dism大部分代码实现。但是Dism++依然跟Dism存在诸多不同，本文将详细阐述Dism++与Dism的使用上或者是功能上的不同之处。
+# Dism vs Dism++ Getting Started
+Dism++ is heavily influenced by Dism. This is because Dism has almost the same underlying implementation as Dism++. It can be said that Dism++ copies most of Dism's code implementation. But Dism++ still has a lot of differences with Dism, this article will elaborate on Dism++ and Dism differences.
 
 
-## Dism++平台兼容性
-Dism++支持Vista~Windows 10所有系统（包括服务器、平板、手机、受限桌面平台等系统），并无其他要求。Dism++也没有对不同系统分平台处理。这点与Dism有很大的不同，不需要准备多个版本的Dism++去兼容不同的系统。也不用担心某些受限桌面平台无法处理问题。
+## Dism++ platform compatibility
+Dism++ supports Vista ~ Windows 10 system (including server, tablet, mobile phone, limited desktop platform and other systems), and no other requirements. Dism++ does not deal with different systems sub-platform. This is a big difference from Dism, and there is no need to prepare multiple versions of Dism++ for compatibility with different systems. Do not worry, that some limited desktop platforms can not support it.
 
 
-## WIM/VHD映像处理命令
-跟Dism不同的是，Dism++支持的映像格式有WIM、SWM、ESD、UUP ESD以及ISO。需要注意的是Dism++不支持VHD、VHDX、FFU以及SFU。Dism不完整支持ESD，但是Dism++提供了完整的ESD支持。在Dism++中，ESD转WIM或者直接保存ESD也是允许的，下面详细的介绍下操作方式。
+## WIM /VHD image processing commands
+Unlike Dism, Dism++ supports WIM, SWM, ESD, UUP ESD, and ISO image formats. It should be noted that Dism++ does not support VHD, VHDX, FFU, and SFU. Dism does not support ESD completely, but Dism++ provides complete ESD support. In Dism++, ESD to WIM or directly to save the ESD is also allowed, the following detailed description of the mode of operation.
 
-### /Apply-CustomDataImage 应用自定义Wimboot数据怎么做
-根据评估，用不到此功能，因此Dism++不尚未添加此功能。如果需要此功能，请反馈。
+### /Apply-CustomDataImage How to apply custom Wimboot data
+Due to present evaluations, this feature is not yet supported, so Dism++ has not implemented this feature yet. If you need this function, please get back to us using the feedback box.
 
-### /Capture-CustomImage 捕获自定义WimBoot数据怎么做
-根据评估，用不到此功能，因此Dism++不尚未添加此功能。如果需要此功能，请反馈。
+### /Capture-CustomImage How to capture custom WimBoot data
+Due to present evaluations, this feature is not yet supported, so Dism++ has not implemented this feature yet. If you need this function, please get back to us using the feedback box.
 
-### /Get-WIMBootEntry 获取WimBoot信息怎么做
-将鼠标移动到对应系统Tab上方，程序会显示此系统的WIMBootEntry配置。
+### /Get-WIMBootEntry How to Get WimBoot information
+Move your mouse over the corresponding system Tab and the program will display the system's WIMBootEntry configuration.
 
-### /List-Image 查看WIM文件列表怎么做
-Dism++不支持此功能，如果需要查看，可以使用7z打开wim/esd文件。
+### /List-Image How to View WIM file list
+Dism++ does not support this feature, if you want to view file list, you can use 7z to open the wim /esd file.
 
-### /Append-Image 增量到现有映像怎么做
-在菜单中 点击 文件 - 另存为映像即可。其中：
+### /Append-Image incrementing to an existing image
+Click on the file menu - Save as an image. among them:
 
-/ImageFile 参数就是下方的编辑框，点击浏览就能选择路径。
+/ImageFile The parameter is below the edit box, click Browse will be able to choose the path.
 
-/CaptureDir 参数是当前选择的系统，你可以切换Tab来调整当前选择的系统。
+/CaptureDir This parameter is the currently selected system, you can switch Tab to adjust the currently selected system.
 
-/Name /Description 参数Dism++会自动感知，如果你不满意，可以双击更改。
+/Name /Description Using this Parameter Dism++ will automatically suggest one for you, if you are not satisfied with the suggestion, you can double-click on it to change.
 
-/ConfigFile 配置可以在 选项 - 详细设置 - 排除列表 中设置。
+/ConfigFile This configuration can be set in Options - Detailed Settings - Exclusion List.
 
-/WIMBoot 参数自动感应，目标文件是WimBoot压缩时自动使用。
+/WIMBoot This parameter is automatically sensed and the target file is automatically used when WimBoot is compressed.
 
-/Bootable 参数自动感应，目标是PE系统时自动使用，另外在专家模式才能更改此设置，新手模式中无法更改也不显示此选项。
+/Bootable This parameter is automatically sensed. The target is automatically used when the PE system is used. In addition, this setting can be changed only in expert mode. This option can not be changed nor displayed in novice mode.
 
-/CheckIntegrity 参数不支持，因为此选项将降低捕获性能。
+/CheckIntegrity This parameter is not supported because this option will reduce the capture performance.
 
-/Verify 参数不支持，因为检查WIM文件会降低性能。
+/Verify This parameter is not supported because checking WIM files can degrade performance.
 
-/NoRpFix 参数不支持，此选项不常用，到时有需要了在添加。
+/NoRpFix parameter is not supported, this option is not commonly used, when the need to add.
 
-/EA 参数自动使用，因为保存扩展属性没有副作用。
+/EA This parameter is automatically used because saving extended attributes has no side effects.
 
-### /Capture-Image 捕获映像怎么做
-用法跟/Append-Image相同，在菜单中 点击 文件 - 另存为映像即可。其中：
+### /Capture-Image How to capture an image
+This option is the same as the /Append-Image option above, Click on the file menu => select Save as an image.:
 
-/ImageFile 参数就是下方的编辑框，点击浏览就能选择路径。
+/ImageFile This parameter is below the edit box, click Browse to choose the path.
 
-/CaptureDir 参数是当前选择的系统，你可以切换Tab来调整当前选择的系统。
+/CaptureDir This parameter is the currently selected system, you can switch Tabs to adjust the currently selected system.
 
-/Name /Description 参数Dism++会自动感知，如果你不满意，可以双击更改。
+/Name /Description parameters Dism++ will automatically suggest one. If you are not satisfied with the suggestion, you can double-click the suggestion to change it.
 
-/ConfigFile 配置可以在 选项 - 详细设置 - 排除列表 中设置。
+/ConfigFile The configuration can be set in Options - Detailed Settings - Exclusion List.
 
-/Compress 参数，点击浏览，能选择压缩类型，Dism++支持所有压缩类型（不压缩/none、快速压缩/fast、WimBoot压缩/WIMBoot、最大压缩/max、极限压缩/recovery）。
+/Compress To select compression parameters, click Browse to select the compression type. Dism++ supports all compression types (none / none, fast, WimBoot, max / max, recovery).
 
-/WIMBoot 参数已经归类到/Compress参数中。
+/WIMBoot This parameter is automatically sensed and the target file is automatically used when WimBoot is compressed.
 
-/Bootable 参数自动感应，目标是PE系统时自动使用，另外在专家模式才能更改此设置，新手模式中无法更改也不显示此选项。
+/Bootable This parameter is automatically sensed. The target is automatically used when the PE system is used. In addition, this setting can be changed only in expert mode. This option can not be changed nor displayed in novice mode.
 
-/CheckIntegrity 参数不支持，因为此选项将降低捕获性能。
+/CheckIntegrity This parameter is not supported because this option will reduce the capture performance.
 
-/Verify 参数不支持，因为检查WIM文件会降低性能。
+/Verify This parameter is not supported because checking WIM files can degrade performance.
 
-/NoRpFix 参数不支持，此选项不常用，到时有需要了在添加。
+/NoRpFix This parameter is not supported as this option is not commonly used but if the need arises it can be added.
 
-/EA 参数自动使用，因为保存扩展属性没有副作用。
+/EA This parameter is automatically used because saving extended attributes has no side effects.
 
-> 温馨提示：如果保存映像时选择一个已经存在的映像，那么Dism++自动调整为 /Append-Image 逻辑，因此，如果你需要全新保存，请删除现有文件在继续。
+> Reminder: If you select an existing image while saving an image, Dism++ automatically adjusts to the /Append-Image logic, so if you need a fresh save, delete the existing file and continue.
 
-### /Apply-Image 释放映像怎么做
-选择 文件 - 释放映像 即可，其中：
+### /Apply-Image How to Apply an image
+Select file menu > Apply Image, of which:
 
-/ImageFile 参数就是映像文件路径，点击第一个浏览按钮即可选择（支持 WIM、SWM、ESD、UUP ESD以及ISO）。
+/ImageFile parameter is the image file path, click the first browse button to select an Image file (support WIM, SWM, ESD, UUP ESD and ISO).
 
-/ApplyDrive 参数就是安装路径，点击第二个浏览按钮选择。
+/ApplyDrive parameters is the installation path, click the second browse button to select.
 
-/Index 参数可以点击目标映像下拉框选择。
+/Index use the drop-down box to select desired Image .
 
-/SFUFile 参数，不支持
+/SFUFile This parameter is not supported
 
-/SkipPlatformCheck 参数不支持。
+/SkipPlatformCheck This parameter is not supported.
 
-/CheckIntegrity 参数会降低性能，不支持。
+/CheckIntegrity This parameter will reduce the performance, so therefore it is not supported.
 
-/Verify 参数会降低性能，不支持。
+/Verify This parameter will reduce the performance, so therefore it is not supported.
 
-/NoRpFix 参数不常用，不支持。
+/NoRpFix this parameter is not commonly used, so therefore it is not supported.
 
-/SWMFile 参数自动感应，目标为SWM时自动使用。
+/SWMFile This parameter is automatically detected and automatically used when the target is SWM.
 
-/ConfirmTrustedFile 参数，不支持。
+/ConfirmTrustedFile This parameter is  not supported.
 
-/WIMBoot 参数，勾选WimBoot可选框即可。与Dism不同的是Dism++允许快速压缩、WimBoot压缩、最大压缩的wim文件使用此特性，另外支持Windows 7以上（包含）所有系统，Dism++自动添加驱动并且解压核心文件。
+/WIMBoot To enable  this parameter, the  WimBoot can be checked . Unlike Dism, Dism++ allows for fast compression, WimBoot compression or maximum compression of WIM files, and supports all systems from Windows 7 and above. Dism++ automatically adds drivers and decompresses core files.
 
-/Compact 参数，勾选Compact可选框即可。此功能支持Windows 7以上（包含）所有系统，Dism++自动添加驱动并且解压核心文件。
+/Compact To use this parameter, tick the Compact option box. This feature supports all systems above (including) Windows 7, Dism++ automatically add drivers and extract core files.
 
-/EA 参数，自动使用。
+/EA parameters, automatically used.
 
-除此之外，Dism++还支持WindowsToGO、添加引导以及格式化分区，有需要的用户可以使用。
+In addition, Dism++ also supports WindowsToGO, add the boot and format the partition, the user in need can use.
 
 
-### /Apply-SiloedPackage 自定义配置怎么做
-Dism++暂不支持此功能。
+### /Apply-SiloedPackage Custom configuration how to do it
+Dism++ does not support this feature right now.
 
 
 ### /Split-Image
-选择 文件 - WIM <--> ESD/SWM，然后在目标文件选择SWM即可。与Dism不同的是，Dism++还允许拆分ESD。
+Select File - WIM <-> ESD /SWM and select SWM in the target file. Unlike Dism, Dism++ also allows for the disassembly of ESD.
 
 
-### /Get-MountedWimInfo或者/Get-MountedImageInfo 查看所有挂载的映像怎么做
-直接启动Dism++即可，Dism++在启动时直接会显示所有的映像，包括挂载映像。你可以点击Tab来切换你需要的映像。
-> Dism++不支持VHD/或者VHDX，因此，Dism++无法查看挂载的VHD/VHDX，如果需要处理挂载的VHD/VHDX，请手动添加映像路径，文件 - 添加路径。
+### /Get-MountedWimInfo or /Get-MountedImageInfo View all mounted images
+Dism++ can be launched directly, Dism++ will display all the mounted images directly at boot time, including the mount image. You can click on the corresponding image tab to switch to the image you need.
+> Dism++ does not support VHD /VHDX. Therefore, Dism++ can not view the mounted VHD /VHDX. If you need to handle the mounted VHD /VHDX, please manually add the image path and file - Add Path.
 
-### /Get-WimInfo或者/Get-ImageInfo 查看所有映像信息怎么做
-Dism++有个`文件`菜单，点击 `打开映像文件` 即可。此外Dism++此功能还支持ISO以及UUP分段映像。除此之外，双击映像信息可以直接修改映像描述信息。
-> Dism++不支持VHD/或者VHDX，因此，你无法使用此功能来查看VHD/VHDX映像。
+### /Get-WimInfo or /Get-ImageInfo View all image information how to do it
+Dism++ has a `File` menu, click` Open Image File`. In addition Dism++ This feature also supports ISO and UUP segmented images. In addition, double-click the image information to directly modify the image description information.
+> Dism++ does not support VHD /or VHDX, so you can not use this feature to view VHD /VHDX images.
 
-### /Commit-Wim或者/Commit-Image 保存更改怎么做
-在Tab中选择需要保存的映像后，再从菜单点击 `文件` -> `保存映像` 即可。也可以按快捷键 Ctrl + S。
+### /Commit-Wim or /Commit-Image How to save changes
+Select the need to save the image in the Tab, then click on the menu `File ->` Save Image `. You can also press the <Ctrl + S> as a shortcut.
 
-Dism++还支持增量保存，如果选择增量保存。那么会在原有的WIM中新增加一个修改后的Index。
+Dism++ also supports incremental saving if you choose Incremental Save. Then in the original WIM add a modified Index.
 
 
-### /Unmount-Wim或者/Unmount-Image 卸载挂载怎么做
-在Tab中选择需要保存的映像后，再从菜单点击 `文件` -> `卸载映像` 即可。也可以按快捷键 Delete。
-> Dism++不支持卸载并保存。如果需要保持，请首先保存映像，然后在使用此功能卸载。
+### /Unmount-Wim or /Unmount-Image Unmount Mount How to do it
+Select the image you want to save in the Tab, then click `File->` Unmount Image from the menu. You can also press the <Delete> as a shortcut.
+> Dism++ does not support Unmount and save. If you need to keep it, first save the image and then Unmount using this feature.
 
-### /Remount-Wim或者/Remount-Image 修复挂载点怎么做
-Dism++在启动时会自动检测挂载映像是否受损，并咨询你是否需要修复，如果你需要使用此功能，只需要点击`确定`即可，无需其他操作。
+### /Remount-Wim or /Remount-Image How to fix the mount point
+Dism++ will automatically detect if a mounted image is damaged at startup, and consult whether you need to repair, if you need to use this feature, just click the "OK" button, no other action required.
 
-### /Cleanup-Wim或者/Cleanup-Mountpoints 清除所有挂载点怎么做
-Dism++不支持此功能，不过你可以手动挨个删除挂载点。
+### /Cleanup-Wim or /Cleanup-Mountpoints To Clear all mount points
+Dism++ does not support this feature, but you can manually remove the mount point one by one.
 
-### /Delete-Image 删除映像索引怎么做
-在 文件 - 打开映像文件 后，选中你需要删除的索引，然后点击删除即可。
+### /Delete-Image Delete image index how to do it
+In the file - open the image file, select the index you need to delete, and then click delete.
 
-### /Export-Image 导出映像怎么做
-有二种办法：
+### /Export-Image How to Export an image
+There are two ways:
 
-方法一：在 文件 - 打开映像文件 后，选中你需要导出的索引，然后点击导出映像即可。这是会提示你选择一个映像文件，如果映像文件存在，那么自动追加不会删除原有数据，不存在则创建。
+Method One: In the file - open the image file, select the Image index you need to export, and then click Export Image. This will prompt you to select an image file, if the image file exists, it automatically appends the data and  does not delete the original data, if it does not exist then it will create.
 
-方法二：在 文件 - WIM <--> ESD/SWM，然后选择一个新的映像文件位置。此功能会导出所有索引，并且会覆盖现有文件。当需要完全转换时比较适合。
+Method two: In File - WIM <-> ESD /SWM, and then select a new image file location. This feature exports all indexes and overwrites existing files. When the need for complete conversion is more appropriate.
 
-## Windows版本服务命令
-Dism++暂不支持此此功能。
+## Windows version service command
+Dism++ does not support this feature right now.
 
-## 无人参与服务命令
-Dism++暂不支持此功能。
+## unattended service command
+Dism++ does not support this feature right now.
 
-## 驱动程序服务命令
-选择 驱动管理，即可处理驱动。与Dism不同的是，Dism++还可以联机处理。
+## driver service command
+Choose driver management, you can handle the drivers. Unlike Dism, Dism++ can also be processed online.
 
-### /Remove-Driver 删除驱动怎么做
-Dism++默认不再新手模式中显示此功能，打开专家模式后，选中需要删除的驱动点击删除即可。
+### /Remove-Driver How to Remove drivers
+Dism++ by default no longer shows this feature in novice mode, open expert mode, select the needed drivers to delete then click delete.
 
-### /Add-Driver 添加驱动怎么做
-可以点击添加按钮，与Dism不同的是，Dism++只允许选择文件夹。在选择后，Dism++会自动把这个文件夹下方的驱动全部添加到系统中。
+### /Add-Driver To add drivers
+Can click on the Add button, and Dism is different, Dism++ allows you to only select the folder. After the choice, Dism + + will automatically add the drivers from this folder to the system.
 
-/recurse 参数自动使用，所以Dism++只能选择文件夹。
+/recurse This parameter is automatically used, so Dism++ can only select the folder.
 
-/ForceUnsigned 参数自动使用，添加未签名的驱动不返回失败。
+/ForceUnsigned parameter is automatically used, add unsigned driver does not return failure.
 
-值得注意的是，Dism++会检查驱动体系，比如你向64位系统添加32位驱动则直接返回失败，这点跟Dism有所不同。
+It is noteworthy that, Dism + + will check the driver system, such as you adding a 32-bit driver to a 64-bit system will directly return an error, which is different from Dism.
 
-### /Get-DriverInfo 查看驱动信息怎么做
-在左侧点击驱动后，自动会在右侧显示驱动详细信息。
+### /Get-DriverInfo how to view a driver information
+When you click a driver on the left, the driver details are automatically displayed on the right.
 
-### /Get-Drivers 获取驱动列表怎么做
-在打开驱动管理时自动会展示列表。
+### /Get-Drivers How to get the list of installed drivers
+The list is automatically displayed when driver management is turned on.
 
-/all 参数，勾选 显示内置驱动 即可。但是需要注意的是，内置驱动无法删除，显示了也染病软。
+/all with this parameter selected, the non-third party drives can be viewed. However, it should be noted that the built-in driver can not be deleted but faulty drivers can be viewed
 
-### /Export-Driver 导出驱动怎么做
-选择你需要导出的驱动，然后点击`导出驱动`即可。
+### /Export-Driver how to export drivers
+Select the driver you need to export, then click `Export Driver`.
 
-## 国际服务命令
-在Dism++中名字叫 区域和语言 ，点击后即可看到相关命令。
+## Internationalization
+Accessible in Dism++ through "name and language".
 
-### /Set-UILang 设置系统语言怎么做
-选择 将系统默认语言调整为指定区域 下拉框即可，另外你需要事先安装对应的语言。
+### /Set-UILang How to set the system language
+Select the system default language to the specified Locale drop-down box can be, in addition you need to install the corresponding language.
 
-### /Set-UserLocale 设置用户区域信息怎么做
-调整 新用户账号 下方的 `将用户配置（格式、键盘布局等）为指定区域` 即可。
+### /Set-UserLocale How to Set user Locale
+Adjust the new user account below the `user configuration (format, keyboard layout, etc.) for the specified Locale`.
 
-### /Set-SysLocale 设置系统区域信息怎么做
-调整 欢迎屏幕（系统账号） 下方的 `将用户配置（格式、键盘布局等）为指定区域` 即可。
+### /Set-SysLocale Set system Locale information how to do it
+Adjust the welcome screen (system account) below the `user configuration (format, keyboard layout, etc.) for the specified Locale`.
 
-### /Set-TimeZone 设置时区怎么做
-调整 `将时区设置调整为以下时区` 即可。
+### /Set-TimeZone Set how to do the time zone
+Adjust `to adjust the time zone settings to the following time zone`.
 
-### /Set-SKUIntlDefaults 或者 /Set-AllIntl 一次性调整为对应的默认语言设置怎么做
-调整 `调整映像中的指定 SKU 语言的所有国际设置都设置为默认值` 即可，此外要使用此功能，请先安装对应的语言包。Dism++也推荐使用此选项，而不是一个个去设置。
+### /Set-SKUIntlDefaults or /Set-AllIntl one-time adjustment for the corresponding default language settings how to do
+All international settings of the specified SKU language in the adjustment and adjustment image are set to the default values. In addition, to use this function, please install the corresponding language pack first. Dism++ also recommends using this option instead of setting it one by one.
 
-### /Get-Intl 获取国际化设置怎么做
-启动此功能时，自动显示国际化相关设置。
+### /Get-Intl Get international settings how to do it
+When this function is activated, international settings are automatically displayed.
 
-### 其他参数
-其他参数，为了UI的实用性以及美观考虑，就不做了，毕竟对大家来说 支持 /Set-SKUIntlDefaults 或者 /Set-AllIntl就可以了，没必要一个个去展示。
+### Other parameters
+Other parameters, in order to UI practicality and aesthetic considerations, not done, after all, for everyone to support /Set-SKUIntlDefaults or /Set-AllIntl on it, no need to show one by one.
 
-## 应用程序服务命令
-考虑到没啥实际价值，不支持此功能，不过Dism++已经应用于Windows Update功能，用于扫描Office相关补丁。
+## application service command
+Taking into account nothing of real value, DISM++ does not support this feature, but Dism++ has applied to Windows Update the features used to scan Office related patches.
 
-## 程序包服务命令
-此功能被分布多个Dism++功能中。
+## package service command
+This feature is distributed in more than one Dism++ feature.
 
-### /Get-Packages 获取已安装的更新怎么做
-在更新管理中 点击 已安装的更新 即可。
+### /Get-Packages how to get installed updates
+Click on "installed update" in Update Management.
 
-### /Get-PackageInfo 获取更新详细信息怎么做
-在已安装的更新列表中 自动展示所有更新信息。
+### /Get-PackageInfo How to Get update details.
+All updates are automatically displayed in the list of installed updates.
 
 
-### /Add-Package 添加更新怎么做
-可以直接点击`添加`，然后选择你本地的更新即可（按住Shift可以选择多个更新文件）。其中：
+### /Add-Package How to add an update
+You can click 'Add', then select your local update (Shift-select multiple updates). among them:
 
-/PackagePath 更新文件路径，支持多个文件，可以按Shift选择多个更新，支持cab、msu以及exe（部分）更新。
+/PackagePath How to select update file path, supports multiple files, you can press Shift to select multiple updates, support for cab, msu and exe (partial) update.
 
-/IgnoreCheck 参数不支持，Dism++强制执行适应性检查。
+/IgnoreCheck parameter is not supported, Dism++ enforces adaptive checking.
 
-/PreventPending 参数不支持。
+/PreventPending parameter is not supported.
 
-最后Dism++还能使用数据库扫描更新，点击`扫描`，在点击`安装`。这样就免去了手动收集补丁的烦恼，Dism++也推荐这样的方式来安装更新。
+Finally, Dism++ can also use the database scan update, click on the `scan`, click on `install`. This eliminates the hassles of manually collecting patches, Dism++ also recommended this way to install updates.
 
-### /Remove-Package 卸载更新怎么做
-首先点击 已安装的更新，然后选中需要删除的更新，最后点击删除即可。
+### /Remove-Package How to Uninstall updates
+First click on the installed update, then select the needed update to delete, and finally click delete.
 
-### /Get-Features 查看所有特定功能怎么做
-点击 Windows功能即可。
+### /Get-Features How to get a list of installed features
+Click on the Windows feature.
 
-### /Get-FeatureInfo 查看特定功能信息怎么做
-点击 Windows功能后，自动展示所有功能的状态。
+### /Get-FeatureInfo View specific information about how to do this
+Clicking on the Windows feature will automatically show the status of all features.
 
-### /Enable-Feature 启用特定功能怎么做
-在功能列表，选择需要开启的功能，然后点击应用即可，其中：
+### /Enable-Feature How to enable specific features
+In the feature list, select the feature you want to open, and then click the application, including:
 
-/LimitAccess 参数，不支持。
+/LimitAccess parameter, not supported.
 
-/Source 参数，支持，在本地源设置一个路径即可，一般是`D:\Sources\sxs`。如果不知道怎么用，可以挂载一个ISO，Dism++能自动感知。
+/Source using this parameter you can set a path in the local source, usually `D:\Sources\sxs`. If you do not know how to use this feature you can mount an ISO, Dism++ can automatically sense.
 
-/All 参数，支持，自动使用。
+/All this parameter supports automatic use.
 
-### /Disable-Feature 关闭特定功能怎么用
-在功能列表，选择需要关闭的功能，然后点击应用即可，其中：
+### /Disable-Feature How to turn off specific features
+In the feature list, select the feature you want to disable, and then click Apply, where:
 
-/Remove 参数，支持，将更新状态调整为 X 即可。
+/Remove parameters, support, the update status can be adjusted to X.
 
-### /Get-Capabilities 查看所有功能怎么用
-点击 可选功能 即可。
-> Dism++为了优化性能，默认关闭了网络请求，如果需要查看所有功能（包含网络位置），那么勾选`显示所有功能`即可。
+### /Get-Capabilities to see all the supported features.
+Click the optional feature.
+> In Dism++, To optimize performance, the network location request is turned off by default. If you want to see all the features (including the network location), check `Show all features`.
 
-### /Get-CapabilityInfo 查看功能信息怎么用
-点击 可选功能 后，自动展示功能信息。
+### /Get-CapabilityInfo It's used to view feature information
+After clicking the optional feature, the feature information is automatically displayed.
 
 
-### /Add-Capability 添加添加功能怎么用
-如需使用此功能，首先在可选功能界面点击`查看所有功能`，然后点击启用即可。其中：
+### /Add-Capability how to add feature
+To use this feature, from the optional features interface click on 'View All Features', and then click Enable. among them:
 
-/Source以及/LimitAccess均不支持，如需添加本地功能，请在`更新管理` 点击 `添加`，手动选择cab文件即可。
+/Source and /LimitAccess are not supported, if you want to add local features, please click `Add` in `Update Management` and select cab file manually.
 
-### /Remove-Capability 删除功能怎么用
-在可选功能界面，在你需要删除的功能上点击删除即可。
+### /Remove-Capability how to remove features
+In the optional feature interface, click delete on the feature you need to remove.
 
-### /Cleanup-Image /RevertPendingActions 撤销挂起更改怎么用
-Dism++不支持此功能。
+### /Cleanup-Image /RevertPendingActions Revocation suspension changes how to use
+Dism++ does not support this feature.
 
-### /Cleanup-Image /spsuperseded 固化SP补丁包怎么用
-此功能已经被合并到/StartComponentCleanup中。其中：
+### /Cleanup-Image /spsuperseded How to curing the SP patch package 
+This feature has been incorporated into /StartComponentCleanup. among them:
 
-/hidesp 参数，自动使用。
+/hidesp parameter, used automatically.
 
-### /Cleanup-Image /StartComponentCleanup 清理WinSxS怎么用
-打开空间回收，里面有个清理项目叫`被取代的WinSxS组件`，勾选此项目然后点击清理即可。另外此功能已经包含 /spsuperseded特新。
+### /Cleanup-Image /StartComponentCleanup How to clean WinSxS
+Open space recovery, there is a cleanup project called `` replaced WinSxS components `, check this item and then click clean up. In addition this feature already contains /spsuperseded new.
 
-/ResetBase 更新固化，自动使用。另外，需要注意的是，Dism已经在Windows 10中屏蔽了此功能，此参数会被自动忽略。但是Dism++（10.1.25.1以及更高版本）不会忽略此参数，此处行为略有差异。另外Dism++还支持Vista以及Windows 7。
+/ResetBase update curing, automatic use. In addition, it is important to note that Dism has masked this feature in Windows 10 and this parameter is automatically ignored. However, Dism++ (10.1.25.1 and later) does not ignore this parameter, where the behavior is slightly different. Dism++ also supports Vista and Windows 7.
 
-/Defer 推迟清理到下次系统维护，不支持此参数。
+/Defer Postponed to the next system maintenance, this parameter is not supported.
 
 
-### /Cleanup-Image /AnalyzeComponentStore 扫描可以清理的空间
-打开空间回收，里面有个清理项目叫`被取代的WinSxS组件`，勾选此项目然后点击扫描即可，程序将展现可清理的空间。
+### /Cleanup-Image /AnalyzeComponentStore Scans for space that can be cleaned up
+Open space recovery, which has a clean-up project called 'WinSxS replaced components', check this item and then click on the scan, the program will show the space can be cleared.
 
-### /Cleanup-Image /CheckHealth 查看是否存在受损标记怎么用
-不支持此功能。
+### /Cleanup-Image /CheckHealth Check for the presence of damaged tags
+This feature is not supported.
 
-### /Cleanup-Image /ScanHealth 扫描系统是否受损怎么用
-在菜单点击恢复功能 - 验证受损，即可。
+### /Cleanup-Image /ScanHealth How to check if system is damaged
+In the menu click on the recovery function - verify damaged, you can.
 
-### /Cleanup-Image /RestoreHealth 恢复系统受损怎么用
-在菜单点击恢复功能 - 修复受损，即可。其中：
+### /Cleanup-Image /RestoreHealth how to restore the damaged system
+In the menu click on the recovery function - repair damaged, you can. among them:
 
-/Source 不支持自定义本地源，然并软的参数。
+/Source does not support custom local sources, but soft parameters.
 
-/LimitAccess参数，阻止网络访问，不支持。
-> 恢复受损是然并软的功能，基本都是修复失败，大家就别抱什么希望了。
+/LimitAccess parameters to prevent network access, not supported.
+> Recovery is a natural and soft function, the basic failure is to repair, we do not hold any hope.
 
 
-## APPX 服务命令
-点击 Appx管理 ，并 点击 Provisioned Appx即可。
+## APPX service command
+Click Appx Management, and click Provisioned Appx.
 
-### /Get-ProvisionedAppxPackages 查看所有预装应用怎么用
-启动UI时自动展示相关Appx信息。
+### /Get-ProvisionedAppxPackages See how all preinstalled apps work
+Relevant Appx information is automatically displayed when starting the UI.
 
-### /Set-ProvisionedAppxDataFile 设置自定义数据怎么用
-不支持此功能。
+### /Set-ProvisionedAppxDataFile How to set custom data 
+This feature is not supported.
 
-### /Remove-ProvisionedAppxPackage 删除预装应用怎么用
-勾选需要删除的应用，在点击删除即可。
+### /Remove-ProvisionedAppxPackage How to remove pre-installed applications
+Select the application to be removed, click delete.
 
-### /Add-ProvisionedAppxPackage 添加Appx怎么用
-不支持此功能。Dism++主要侧重于删除，等微软的Appx成气候了在添加此功能。
+### /Add-ProvisionedAppxPackage How to add Appx package
+This feature is not supported. Dism++ mainly focuses on deleting, waiting for Microsoft Appx to become a plus after adding this feature.
 
 ## PROVISIONING PACKAGE SERVICING COMMANDS
-不支持此功能。
+This feature is not supported.
 
-## 默认关联命令
-点击`文件关联`即可查看相关功能。与Dism不同的是，在Dism++中，Vista以及Windows 7也能使用此功能。
+## default associated command
+Click on the file association to view the relevant features. Unlike Dism, this feature is also available in Vista and Windows 7 in Dism++.
 
-### /Remove-DefaultAppAssociations 删除默认程序关联怎么用
-点击 `Windows映像默认应用程序关联` 下方的删除按钮即可。
+### /Remove-DefaultAppAssociations How to remove the default program association
+Click on the delete button below the "Windows Image Default Application Associations."
 
-### /Import-DefaultAppAssociations 导入默认程序关联怎么用
-点击 `Windows映像默认应用程序关联` 下方的导入按钮即可。
+### /Import-DefaultAppAssociations How to use the default program association import
+Click on the import button under Windows Imaging Default Application Associations.
 
-### /Get-DefaultAppAssociations 怎么查看默认程序关联
-点击 `Windows映像默认应用程序关联` 下方的导出按钮，然后在使用文本查看器，查看刚才导出的配置文件。
+### /Get-DefaultAppAssociations How to check the default program association
+Click on the Export button under `Windows Image Default Application Linking 'and then use the text viewer to see the profile you just exported.
 
-### /Export-DefaultAppAssociations 怎么导出当前用户的程序关联配置
-点击 `Windows联机映像默认应用程序关联` 下方的导出按钮即可。
+### /Export-DefaultAppAssociations How to export the current user's program association configuration
+Click on the Export button below the 'Windows Online Images Default Application Associations' button.
 
-## WINDOWS PE 命令
-点击`WinPE命令`即可查看相关功能。
+## WINDOWS PE command
+Click `WinPE command` to view the related functions.
 
-### /Get-ScratchSpace 或者 /Get-TargetPath 或者 /Get-PESettings 怎么查看PE相关设置
-打开此功能时自动显示相关设置。
+### /Get-ScratchSpace or /Get-TargetPath or /Get-PESettings How to View PE Related Settings
+Relevant settings are automatically displayed when this feature is turned on.
 
-### /Set-ScratchSpace 怎么调整暂存空间
-调整 `设置 Windows PE 映像的暂存空间（MB）`此设置，然后点击应用即可。
+### /Set-ScratchSpace how to adjust the temporary storage space
+Adjust `Set Windows PE image scratch space (MB)` This setting, and then click Apply.
 
-### /Set-TargetPath 怎么调整目标PE路径
-调整 `设置 Windows PE 映像的目标路径`此设置，然后点击应用即可。
+### /Set-TargetPath How to adjust the target PE path
+Adjust `to set the target path for Windows PE images` this setting, and then click Apply.
 
-### /Get-Profiling 怎么查看配置文件
-不支持此功能。
+### /Get-Profiling how to view the configuration file
+This feature is not supported.
 
-### /Apply-Profiles 应用配置文件怎么用
-不支持此功能。
+### /Apply-Profiles How to use the configuration file
+This feature is not supported.
 
-### /Disable-Profiling 禁用配置文件怎么用
-不支持此功能。
+### /Disable-Profiling How to disable configuration file
+This feature is not supported.
 
-### /Enable-Profiling 启用配置文件怎么用
-不支持此功能。
+### /Enable-Profiling How to enable configuration file
+This feature is not supported.
